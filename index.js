@@ -61,6 +61,7 @@ btnNo.addEventListener("mouseover", () => {
 	btnNo.style.top = `${randomY}px`;
 });
 
+let messageAdded = false;
 function createFloatingSVG() {
 	const randomNumber = Math.floor(Math.random() * 10 + 5);
 	for (let i = 0; i < randomNumber; i++) {
@@ -78,9 +79,14 @@ function createFloatingSVG() {
 
 		setTimeout(() => svg.remove(), 2000);
 	}
-	const message = document.createElement("p");
-	message.innerText = "Now, go ahead and tell the one who sent you this.";
-	document.body.appendChild(message);
+
+	if (!messageAdded) {
+		const message = document.createElement("p");
+		message.innerText = "Now, go ahead and tell the one who sent you this.";
+		document.body.appendChild(message);
+
+		messageAdded = true;
+	}
 }
 
 btnYes.addEventListener("click", createFloatingSVG);

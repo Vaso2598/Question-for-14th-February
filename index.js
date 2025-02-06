@@ -82,7 +82,7 @@ function createFloatingSVG() {
 
 	if (!messageAdded) {
 		const message = document.createElement("p");
-		message.innerText = "Now, go ahead and tell the one who sent you this.";
+		message.innerText = "Now, go ahead and tell that to the one who sent you this.";
 		document.body.appendChild(message);
 
 		messageAdded = true;

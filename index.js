@@ -34,23 +34,46 @@ const sizes = {
 	width: window.innerWidth,
 	height: window.innerHeight,
 };
+
+console.log(sizes)
 function centerButtons() {
 	sizes.width = window.innerWidth;
 	sizes.height = window.innerHeight;
 
 	const centerX = sizes.width / 2;
 	const centerY = sizes.height / 2;
+	if(sizes.width >= 500){
+		console.log("pc")
+		btnYes.style.top = `${centerY - 35}px`;
+		btnYes.style.left = `${centerX - 300}px`;
 
-	btnYes.style.top = `${centerY - 35}px`;
-	btnYes.style.left = `${centerX - 300}px`;
+		btnNo.style.top = `${centerY - 35}px`;
+		btnNo.style.left = `${centerX + 100}px`;
+	}
+	else{
+		console.log("mobile")
+		btnYes.style.top = `${centerY - 35}px`;
+		btnYes.style.left = `${centerX - 210}px`;
 
-	btnNo.style.top = `${centerY - 35}px`;
-	btnNo.style.left = `${centerX + 100}px`;
+		btnNo.style.top = `${centerY - 35}px`;
+		btnNo.style.left = `${centerX + 10}px`;
+	}
 }
 centerButtons();
 window.addEventListener("resize", centerButtons);
 
 btnNo.addEventListener("mouseover", () => {
+	const maxWidth = sizes.width - btnNo.offsetWidth - 200;
+	const maxHeight = sizes.height - btnNo.offsetHeight - 200;
+
+	const randomX = Math.floor(Math.random() * maxWidth);
+	const randomY = Math.floor(Math.random() * maxHeight);
+
+	btnNo.style.left = `${randomX}px`;
+	btnNo.style.top = `${randomY}px`;
+});
+
+btnNo.addEventListener("click", () => {
 	const maxWidth = sizes.width - btnNo.offsetWidth - 200;
 	const maxHeight = sizes.height - btnNo.offsetHeight - 200;
 
@@ -83,7 +106,7 @@ function createFloatingSVG() {
 	if (!messageAdded) {
 		const message = document.createElement("p");
 		message.innerText = "Now, go ahead and tell that to the one who sent you this.";
-		document.body.appendChild(message);
+		choice.appendChild(message);
 
 		messageAdded = true;
 	}

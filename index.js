@@ -100,7 +100,7 @@ function createFloatingSVG() {
 
 		document.body.appendChild(svg);
 
-		setTimeout(() => svg.remove(), 2000);
+		setTimeout(() => svg.remove(), 3000);
 	}
 
 	if (!messageAdded) {
